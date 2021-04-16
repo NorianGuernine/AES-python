@@ -1,2 +1,2 @@
-Message texte a crypter 
+Message texte a chiffrer
 Suite du message 
