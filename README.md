@@ -1,7 +1,7 @@
 # AES-python
 AES encryption and decryption for files
 
-##Code structure
+## Code structure
 
 ### CF_Multi.py
 Multiplication by Galois field for MixColumns functions 
