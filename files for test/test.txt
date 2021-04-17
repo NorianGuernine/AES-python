@@ -1,2 +1,1 @@
-Message texte a chiffrer
-Suite du message 
+Message secret
