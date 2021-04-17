@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#Chiffrement fichier
+#Chiffrement Dechiffrement fichier
 
 import numpy as np
 from MiseEnForme import *
