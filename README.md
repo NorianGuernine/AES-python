@@ -33,6 +33,7 @@ AddRounkey operation, Keyschedule and KeyExpansion to calculate new key for each
 ### Create a file for the key
 First, you need to create a texte file and write your key in it:
 ![cle.txt](https://github.com/NorianGuernine/AES-python/blob/main/Pictures/cle_txt.png)
+
 Please be careful not to add more than one space between each byte of the key.
 There should be no space before the first byte or after the last byte. 
 
