@@ -1,6 +1,7 @@
 # AES-python
 AES with encryption and decryption for files using 128 bit key size
 Project developed with Python version 3.6.8 and numpy version 1.18.1
+You can find an encryption key and files to be encrypted in the file fot test directory.
 
 ## Code structure
 You can find the code in the src folder
