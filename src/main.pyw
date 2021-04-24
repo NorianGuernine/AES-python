@@ -13,24 +13,26 @@ def Ouverture_fichier_cle():
         pass
 
 def Ouverture_fichier_plaintext():
-    if fichier_binaire.get() != 0:
-        filename = tkinter.filedialog.askopenfilename(title="Ouvrir fichier plaintext",filetypes=[('fichier binaire','.png'),('all files','.*')])
-    else:
-        filename = tkinter.filedialog.askopenfilename(title="Ouvrir fichier plaintext",filetypes=[('text files','.txt'),('all files','.*')])
+    filename = tkinter.filedialog.askopenfilename(title="Ouvrir fichier plaintext",filetypes=[('all files','.*')])
     path_plaintext.set(filename)
+    
+def Chiffrement_plaintext():
+    filetosave=tkinter.filedialog.asksaveasfile(title="Enregistrer fichier",filetypes=[('All Files', '*.*')])
     try:
-        chiffrement = ecriture_ciphertext(filename,path_key.get(),fichier_binaire.get())
+        chiffrement = ecriture_ciphertext(path_plaintext.get(),path_key.get(),filetosave.name)
         if chiffrement == -1:
             showwarning("Erreur","La taille de la clé n'est pas bonne")
     except FileNotFoundError:
         showwarning("Erreur","Il semble qu'il manque un fichier")
 
-def Sauvegarde_fichier_cipher():
-    filename = tkinter.filedialog.askopenfilename(title="Ouvrir fichier cipher",filetypes=[('fichier csv','.csv'),('all files','.*')])
+def Ouvrir_fichier_cipher():
+    filename = tkinter.filedialog.askopenfilename(title="Ouvrir fichier cipher",filetypes=[('all files','.*')])
+    path_ciphertext.set(filename)
+    
+def dechiffrement_plaintext():
     filetosave=tkinter.filedialog.asksaveasfile(title="Enregistrer fichier",filetypes=[('All Files', '*.*')])
-    path_ciphertext.set(filetosave.name)
     try:
-        dechiffrement = lecture_plaintext(filename,filetosave.name,path_key.get(),fichier_binaire2.get())
+        dechiffrement = lecture_plaintext(path_ciphertext.get(),filetosave.name,path_key.get())
         if dechiffrement == -1:
             showwarning("Erreur","La taille de la clé n'est pas bonne")
     except FileNotFoundError:
@@ -54,7 +56,7 @@ Frame1.pack(side=TOP,padx=20,pady=20)
 
 # Création d'un widget Label (texte 'clé de chiffrement')
 Label_cle = Label(Frame1, text = 'Clé de chiffrement')
-Label_cle.grid(row=0,column=0,padx =0, pady =10)
+Label_cle.grid(columnspan = 4)
 
 # Création d'un widget Entry (chemin de la clé)
 path_key= StringVar()
@@ -68,13 +70,13 @@ Ouvrir_cle.grid(row=1,column=1,padx =0, pady =10)
 
 # Création d'un widget Label (texte 'clé de chiffrement')
 Label_cle = Label(Frame1, text = 'Valeur de la clé (décimal)')
-Label_cle.grid(row=2,column=0,padx =0, pady =10)
+Label_cle.grid(columnspan = 4)
 
 # Création d'un widget Entry (valeure de la clé)
 val_key= StringVar()
-Champ = Entry(Frame1, textvariable= val_key,width = 50)
-Champ.focus_set()
-Champ.grid(row=3,column=0,padx =0, pady =10)
+Champ2 = Entry(Frame1, textvariable= val_key,width = 50)
+Champ2.focus_set()
+Champ2.grid(row=3,column=0,padx =0, pady =10)
 
 # création d'un widget Frame pour chiffrement dans la fenêtre principale 
 Frame2 = Frame(fenetre,width=500, height=500, borderwidth=2,relief=GROOVE)
@@ -82,7 +84,7 @@ Frame2.pack(side=TOP,padx=20,pady=20)
 
 # Création d'un widget Label (texte 'plaintext')
 Label_plaintext = Label(Frame2, text = 'Chiffrement')
-Label_plaintext.grid(row=0,column=0,padx =0, pady =10)
+Label_plaintext.grid(columnspan = 4)
 
 # Création d'un widget Entry (chemin du plaintext)
 Champ_plaintext = Entry(Frame2, textvariable= path_plaintext,width = 50)
@@ -93,9 +95,9 @@ Champ_plaintext.grid(row=2,column=0,padx =0, pady =10)
 Ouvrir_plaintext = Button(Frame2, text ='Ouvrir', command = Ouverture_fichier_plaintext)
 Ouvrir_plaintext.grid(row=2,column=1,padx =0, pady =10)
 
-# Création d'un widget Checkbutton
-Bouton_fichier = Checkbutton(Frame2,text="Fichier binaire (image, musique...)",variable=fichier_binaire)
-Bouton_fichier.grid(row=1,column=0,padx =0, pady =10)
+# Création d'un widget Button (bouton Chiffrer fichier plaintext)
+Ouvrir_plaintext = Button(Frame2, text ='Chiffrer', command = Chiffrement_plaintext)
+Ouvrir_plaintext.grid(row=3,columnspan = 4,padx =0, pady =5)
 
 # création d'un widget Frame pour déchiffrement dans la fenêtre principale 
 Frame3 = Frame(fenetre,width=500, height=500, borderwidth=2,relief=GROOVE)
@@ -103,11 +105,7 @@ Frame3.pack(side=TOP,padx=20,pady=20)
 
 # Création d'un widget Label (texte 'plaintext')
 Label_ciphertext = Label(Frame3, text = 'Déchiffrement')
-Label_ciphertext.grid(row=0,column=0,padx =0, pady =10)
-
-# Création d'un widget Checkbutton
-Bouton_fichier = Checkbutton(Frame3,text="Fichier binaire (image, musique...)",variable=fichier_binaire2)
-Bouton_fichier.grid(row=1,column=0,padx =0, pady =10)
+Label_ciphertext.grid(columnspan = 4)
 
 # Création d'un widget Entry (chemin du ciphertext)
 Champ_ciphertext = Entry(Frame3, textvariable= path_ciphertext,width = 50)
@@ -115,9 +113,12 @@ Champ_ciphertext.focus_set()
 Champ_ciphertext.grid(row=2,column=0,padx =0, pady =10)
 
 # Création d'un widget Button (bouton Ouvrir fichier ciphertext)
-Ouvrir_ciphertext = Button(Frame3, text ='Ouvrir', command = Sauvegarde_fichier_cipher)
+Ouvrir_ciphertext = Button(Frame3, text ='Ouvrir', command = Ouvrir_fichier_cipher)
 Ouvrir_ciphertext.grid(row=2,column=1,padx =0, pady =10)
 
+# Création d'un widget Button (bouton Chiffrer fichier plaintext)
+Ouvrir_plaintext = Button(Frame3, text ='Déchiffrer', command = dechiffrement_plaintext)
+Ouvrir_plaintext.grid(row=3,columnspan = 4,padx =0, pady =5)
 
 
 #Montage fenêtre

@@ -48,27 +48,18 @@ def recoi_decrypt(ciphertext,key): #/!\Ne doit recevoir en plaintext que  liste
     key=StringToList(key)
     key=MiseEnForme(key)    #Mise sous la forme de matrice de la clé
     keyexpansion=KeyExpansion(key,Sbox) #Generation des clés pour chaque round
-    while len(ciphertext)>16:
+    for i in range(0,(len(ciphertext)//16)):
         tampon=ciphertext[0:16]
         tampon=MiseEnForme(tampon)
         plaintext=InvRijndael(tampon,keyexpansion)
         plain.append(plaintext)
         for i in range(0,16):
             del ciphertext[0]
-    if len(ciphertext) > 0:
-        while(len(ciphertext) < 16):
-            if type(ciphertext[0]) is int:
-                ciphertext.append(0)
-            elif type(ciphertext[0]) is str:
-                ciphertext.append('\0')
-            else:
-                return -1
-        ciphertext=MiseEnForme(ciphertext)
-        plaintext=InvRijndael(ciphertext,keyexpansion)
-        plain.append(plaintext)
     for array in plain: #Conversion de la matrice en liste 1 dimension
         for element in array: #Conversion de la matrice en liste 1 dimension
             for element2 in element:
                 liste.append(element2)
+    for i in range(0,liste[len(liste)-1]):
+        liste.pop()
     return liste #Retourne liste chiffré
 
