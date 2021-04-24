@@ -11,8 +11,7 @@ You can find an encryption key and files to be encrypted in the file fot test di
 First, you need to create a texte file and write your key in it:
 ![cle.txt](https://github.com/NorianGuernine/AES-python/blob/main/Pictures/cle_txt.png)
 
-Please be careful not to add more than one space between each byte of the key.
-There should be no space before the first byte or after the last byte. 
+/!\The key size must be 128 bits, therefore, if you enter a longer key, only the first 32 bytes will be used for the key.
 
 ### Launch main.pyw
 Then launch the file main.pyw and click on "ouvrir" in the frame "Clé de chiffrement"
