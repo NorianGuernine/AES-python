@@ -21,14 +21,12 @@ You can check if your key loaded correctly in the "key value (decimal)" Entry bo
 
 #### Encrypt file
 To encrypt an file, go to the "Chiffrement" frame.
-If your file is of binary type (such as png files) check the box "Fichier binaire", else, leave the box empty. 
-After that, click on "Ouvrir" and select your file, then, click on "Chiffrer" and choose where to save the encrypted file.
+Click on "Ouvrir" and select your file, then, click on "Chiffrer" and choose where to save the encrypted file.
 When the encryption is complete, a binary file is created, this is your encrypted file.
 
 #### Decrypt file 
 To decrypt file, go to the "Déchiffrement" frame.
-If your file is of binary type (such as pictures) check the box "Fichier binaire", else, leave the box empty. 
-After that, click on "Ouvrir" and select the file corresponding to the encrypted file, then, click on "Déchiffrer" and choose were to save the decrypted file. /!\ You must specify the extension of your file when you save it.
+Click on "Ouvrir" and select the file corresponding to the encrypted file, then, click on "Déchiffrer" and choose were to save the decrypted file. /!\ You must specify the extension of your file when you save it.
 
 ## Code structure
 You can find the code in the src folder
