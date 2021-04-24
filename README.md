@@ -18,17 +18,17 @@ There should be no space before the first byte or after the last byte.
 Then launch the file main.pyw and click on "ouvrir" in the frame "Clé de chiffrement"
 You can check if your key loaded correctly in the "key value (decimal)" Entry box
 ![chargement_cle](https://github.com/NorianGuernine/AES-python/blob/main/Pictures/cle_main.png)
+
 #### Encrypt file
 To encrypt an file, go to the "Chiffrement" frame.
 If your file is of binary type (such as png files) check the box "Fichier binaire", else, leave the box empty. 
-After that, click on "Ouvrir" and select your file.
-When the encryption is complete, a csv file named "encryption.csv" is created, this is your encrypted file.
+After that, click on "Ouvrir" and select your file, then, click on "Chiffrer" and choose where to save the encrypted file.
+When the encryption is complete, a binary file is created, this is your encrypted file.
 
 #### Decrypt file 
 To decrypt file, go to the "Déchiffrement" frame.
 If your file is of binary type (such as pictures) check the box "Fichier binaire", else, leave the box empty. 
-After that, click on "Ouvrir" and select the csv file corresponding to the encrypted file.
-Then save the decrypted file. /!\ You must specify the extension of your file when you save it.
+After that, click on "Ouvrir" and select the file corresponding to the encrypted file, then, click on "Déchiffrer" and choose were to save the decrypted file. /!\ You must specify the extension of your file when you save it.
 
 ## Code structure
 You can find the code in the src folder
