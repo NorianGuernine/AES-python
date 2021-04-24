@@ -69,7 +69,7 @@ Ouvrir_cle = Button(Frame1, text ='Ouvrir', command = Ouverture_fichier_cle)
 Ouvrir_cle.grid(row=1,column=1,padx =0, pady =10)
 
 # Création d'un widget Label (texte 'clé de chiffrement')
-Label_cle = Label(Frame1, text = 'Valeur de la clé (décimal)')
+Label_cle = Label(Frame1, text = 'Valeur de la clé (hexadécimal)')
 Label_cle.grid(columnspan = 4)
 
 # Création d'un widget Entry (valeure de la clé)
