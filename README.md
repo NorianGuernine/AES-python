@@ -55,7 +55,7 @@ Contain functions to convert String to list and list to numpy array with type ui
 ### Operation_cle.py
 AddRounkey operation, Keyschedule and KeyExpansion to calculate new key for each round
 
-## About the cipher
+## About encryption
 The padding used is PKCS#7.
 
 The next updates will add other block cipher mode of operation such as CBC and CFB mode.
